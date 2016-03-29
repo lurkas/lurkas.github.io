@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIRSTFAN</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="plugins/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+  <!--   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+<!-- MENU -->
+  <aside class="left-off-canvas-menu">
+      <ul>
+        <li class="logo">first<span class="fan">fan</span></li>
+        <h2>Sort by</h2>
+        <li>
+          <input type="radio" id="f-popular" name="selector">
+          <label for="popular">Most Popular</label>
+    
+          <div class="check"></div>
+          </li>
+        <li>
+          <input type="radio" id="f-recent" name="selector">
+          <label for="recent">Most Recent</label>
+    
+          <div class="check"><div class="inside"></div></div>
+        </li>
+  
+        <li>
+          <input type="radio" id="f-like" name="selector">
+          <label for="like">Most Liked</label>
+    
+          <div class="check"><div class="inside"></div></div>
+        </li>
+
+        <li>
+          <input type="radio" id="f-comment" name="selector">
+          <label for="radio">Most Commented</label>
+    
+          <div class="check"><div class="inside"></div></div>
+        </li>
+      </ul>
+  </aside>
+    <!-- /MENU -->
+
+
+<section class="right-panel">
+        <nav class="navbar navbar-default">
+         <input id="search" placeholder="  Search by Musician, Performer, Illustrator, Dancer, Acrobat...">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span><a href="index.html" class="logo">FIRSTFAN</a></span>
+              </button>
+
+              <!-- Search -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+            </div><!--/.nav-collapse -->
+          </div><!--/.container-fluid -->
+        </nav>
+
+   <div id="instafeed">
+      
+      </div>
+</section>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript" src="plugins/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="plugins/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+<script type="text/javascript" src="plugins/instafeed.min.js"></script>
+
+
+<script>
+    var instaFeed = new Instafeed({
+    get: 'tagged',
+    tagName: 'nycsubwaymusic',
+    userId: 6678174,
+    accessToken: '6678174.467ede5.205a03ebc4b74d4082823781c3149575',
+    target: 'instafeed',
+    sortBy: 'most-recent',
+    limit: 32,
+    resolution: 'standard_resolution',
+    template: '<a href="{{link}}"><img src="{{image}}" /><div id="filter">{{model.filter}}</div><div class="info"><p class="location"><i class="icon-location"></i>{{location}}</p><p><i class="icon-comment"></i>{{caption}}</p><br><ul><li class="icon-heart">{{likes}} likes<li class="icon-chat">{{comments}} comments<li class="timestamp">{{model.created_time}}</div></ul></div></a>',
+    filter: function(image)
+    {
+
+    var date = new Date(image.created_time*1000);
+
+    d = date.getDate();
+    m = date.getMonth();
+    y = date.getFullYear();
+
+    var month_names = new Array ( );
+    month_names[month_names.length] = "Jan";
+    month_names[month_names.length] = "Feb";
+    month_names[month_names.length] = "Mar";
+    month_names[month_names.length] = "Apr";
+    month_names[month_names.length] = "May";
+    month_names[month_names.length] = "Jun";
+    month_names[month_names.length] = "Jul";
+    month_names[month_names.length] = "Aug";
+    month_names[month_names.length] = "Sep";
+    month_names[month_names.length] = "Oct";
+    month_names[month_names.length] = "Nov";
+    month_names[month_names.length] = "Dec";
+
+    var thetime = d + ' ' + month_names[m] + ' ' + y;
+
+    image.created_time = thetime;
+
+    return true;
+  }
+
+
+}).run();
+
+$.fn.extend({
+    matchHeight: function (data) {
+        var maxHeight = 0;
+        $(this).each(function () {
+            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+        });
+        $(this).height(maxHeight);
+    }
+});
+      
+    </script>
+
+
+
+<!-- WINDOW RESIZER -->
+<div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1444</span> x <span class="tooltipHeight" id="winHeight">873</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">787</span> x <span class="tooltipHeight" id="vpHeight">734</span></div>
+    
+
+<script src="js/bootstrap.js"></script>
+<!-- <script src="js/script.js"></script> -->
+
+</body>
+</html>
+
