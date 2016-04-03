@@ -257,7 +257,6 @@ input.clearable:hover {
 }
 
 input.clearable {
-   /* float: right;*/
     color: black;
     font-size: 0.7em;
     border-radius: 100%;
@@ -272,16 +271,6 @@ input.clearable {
 
 }
 
-
-/*.ui-autocomplete-category {
-  font-weight: bold;
-  padding: .2em .4em;
-  margin: .8em 0 .2em;
-  line-height: 1.5;
-  background-color: #4a4a4a;
-  color: #ffffff;
-}*/
-
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   padding: 0px;
     border: none;
@@ -292,6 +281,8 @@ input.clearable {
 .navbar-default {
     border-radius: 0;
 }
+
+/*     HAMBURGER     */
 
 .navbar-toggle {
     position: relative;
@@ -326,21 +317,14 @@ button {
 
 .timestamp {
   background: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1));
-/*  z-index: 1;*/
   color: #ffffff;
   font-size: 0.8em;
-/*  font-weight: bold; */
   text-align: right;
   padding: 0.9em 0;
   position: relative;
   top: 0;
   width: 100%;
   padding-right: 1em;
- /* left: 1em;*/
-/*  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);*/
 }
 
 #instafeed .info {
@@ -349,10 +333,7 @@ button {
 }
 #instafeed .info p {
   font-size: 0.9em;
-/*  line-height: 1.45;*/
   font-weight: bolder;
- /* text-overflow: ellipsis;*/
-/*  white-space: nowrap;*/
   overflow: hidden;
   margin-bottom: 2em;
   display: -webkit-box;
@@ -456,19 +437,19 @@ button {
     margin: 0;
   }
 
-  .left-off-canvas-menu li .check{
-  display: block;
-  position: absolute;
-  border: 2px solid #AAAAAA;
-  border-radius: 100%;
-  height: 30px;
-  width: 30px;
-  top: 20px;
-  left: 20px;
-  z-index: 5;
-  transition: border .25s linear;
-  -webkit-transition: border .25s linear;
-}
+    .left-off-canvas-menu li .check{
+    display: block;
+    position: absolute;
+    border: 2px solid #AAAAAA;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+  }
 
 
   .left-off-canvas-menu label{
@@ -501,6 +482,309 @@ button {
     font-size: 0.9em;
   }
 
+/**//**//**//**//**//**//**//**//**//**//**//**/
+/*/////////START - HAMBURGER ANIMATION//////*/
+a {
+  cursor: pointer;
+}
+
+/* Global Variables 
+***************************************************************/
+@color10: #1abc9c; /* Heading and buttons */
+
+@faster: 0.2s;
+@fast: 0.3s;
+@slow: 0.4s;
+.transition (@time:@slow) {
+  transition:           all @time ease-in-out;
+  -webkit-transition:   all @time ease-in-out;
+  -moz-transition:      all @time ease-in-out;
+  -o-transition:        all @time ease-in-out;
+  -ms-transition:       all @time ease-in-out; 
+}
+
+.rotate (@deg: 45deg){
+  transform: rotate(@deg);
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+}
+
+.border-box {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+/* Element Variables
+   Change @bar-w to adjust entire button size.
+*/
+@bar-w: 30px;
+@bar-o: @bar-w / 3.3;
+@bar-h: 2px;
+@bar-p: 60px;
+@panel-width: 450px;
+@panel-z-index: 9999;
+
+/* Start Styles - Side Menu 
+***************************************************************/
+.left-off-canvas-menu {
+  .transition(@faster);
+  position: fixed;
+  z-index:  @panel-z-index;
+  top: 0;
+  height: 100%;
+  width: @panel-width;
+  
+  ul {
+    list-style-type: none;
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 60px;
+    right: 60px;
+    height: auto;
+    text-align: left;
+    
+    li, a {
+      display: inline-block;
+      float: left;
+      width: 100%;
+      line-height: 1.4;
+      padding: 0;
+      font-weight: 200;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }/* li & a */
+   
+ /*   li.menu-label {
+      font-size: 16px;
+      margin: 30px 0 10px 0;
+      text-transform: lowercase;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    a {
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+    
+    li.menu-contacts {
+      a {
+        font-size: 16px;
+        text-transform: inherit;
+      }
+    }*/
+  }/* ul */
+  
+  /* Ninja Button styles */
+  .ninja-btn {
+    .transition(@faster);
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+    padding: (@bar-p /1.75) (@bar-p /2);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: @bar-w;
+    height: (@bar-o * 2) + @bar-h;
+  }
+
+  .ninja-btn span,
+  .ninja-btn span:before,
+  .ninja-btn span:after {
+    .transition(@fast);
+    width: @bar-w;
+    height: @bar-h;
+  }
+
+  .ninja-btn span {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-top: @bar-o;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    &:before {
+      top: -@bar-o;
+    }
+    &:after {
+      top: @bar-o;
+    }
+
+  }/* Ninja Button */
+
+  .ninja-btn.active span{
+    background-color: transparent;
+    &:before,
+    &:after {
+      top: 0;
+    }
+    &:before {
+      .rotate(-135deg);
+    }
+    &:after {
+     -webkit-transition-delay: 0.09s;
+      -moz-transition-delay: 0.09s;
+      -o-transition-delay: 0.09s;
+      -msa-transition-delay: 0.09s;
+      transition-delay: 0.09s;
+      .rotate(135deg);
+    }
+  }/* Ninja Button Active */
+}/* Panel */
+
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  z-index: @panel-z-index - 1;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba( 0, 0, 0, 0.35 );
+  
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.05)), color-stop(100%,rgba(0,0,0,.60)));
+  
+  cursor: pointer;
+}/* overlay */
+
+.panel {
+  @panel-color: #FFFFFF;
+  background-color: @panel-color;
+  ul {
+    li, a {
+      color: #8e8e93;
+    }/* li */
+    
+    li a:hover,
+    li.active a {
+      color: @color10;
+    }
+  }/* ul */
+  
+  .ninja-btn span,
+  .ninja-btn span:before,
+  .ninja-btn span:after {
+    background-color: @color10;
+  }
+}/* panel white */
+
+
+.panel-black {
+  @panel-color: #000000;
+  background-color: @panel-color;
+  ul {
+    li, a {
+      color: rgba( 255, 255, 255, 0.50 );
+    }
+    
+    li a:hover,
+    li.active a {
+      color: #FFFFFF;
+    }
+  }
+  
+  .ninja-btn {
+    background-color: @panel-color;
+  }
+  
+  .ninja-btn span,
+  .ninja-btn span:before,
+  .ninja-btn span:after {
+    background-color: @color10;
+  }
+}
+
+
+/*.panel-brand {
+  @panel-color: @color10;
+  background-color: @panel-color;
+  ul {
+    li, a {
+      color: rgba( 0, 0, 0, 0.50 );
+    }
+    
+    li a:hover,
+    li.active a {
+      color: #FFFFFF;
+    }
+  }*/
+  
+  .ninja-btn {
+    background-color: @panel-color;
+  }
+  
+  .ninja-btn span,
+  .ninja-btn span:before,
+  .ninja-btn span:after {
+    background-color: #FFFFFF;
+  }
+  
+  /*
+  .ninja-btn.active span:before,
+  .ninja-btn.active span:after {
+    background-color: rgba( 0, 0, 0, 0.50 );
+  }*/
+/*}*//* panel brand */
+
+
+
+
+.panel.left {
+  left: -(@panel-width);
+  
+  .ninja-btn {
+    left: 100%;
+  }
+}
+
+/* Panel Left Active */
+.panel.left.active {
+  left : 0;
+
+  .ninja-btn {
+    left: 100%;
+    margin-left: -(@bar-w + @bar-p);
+  }
+}/* Panel Menu Active */
+
+
+.panel.right {
+  right: -(@panel-width);
+  
+  .ninja-btn {
+    right: 100%;
+  }
+}
+
+
+/* Panel Right Active */
+.panel.right.active {
+  right : 0;
+  
+  .ninja-btn {
+    right: 100%;
+    margin-right: -(@bar-w + @bar-p);
+  }
+}/* Panel Menu Active */
+
+/*/////////END - HAMBURGER ANIMATION//////*/
+/**//**//**//**//**//**//**//**//**/
 
   #instafeed a {
     width: calc(100%/2 - 1em);
@@ -516,10 +800,7 @@ button {
     background-color: #222222;
     margin: 0;
   }
-  .navbar-header {
-    margin-left: 0;
-   /* padding-left: 1em;*/
-  }
+
 
   button#sumit {
       width: 17%;

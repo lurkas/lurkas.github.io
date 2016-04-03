@@ -20,6 +20,9 @@
 
 <!-- MENU -->
   <aside class="left-off-canvas-menu">
+     <div class="overlay"></div>
+      <!-- Animated button -->
+      <a class="ninja-btn" title="menu"><span></span></a>
       <ul>
         <div class="logo">first<span class="fan">fan</span></div>
         <h2>Sort by</h2>
@@ -28,7 +31,7 @@
           <label for="popular">Most Seen</label>
     
           <div class="check"></div>
-          </li>
+        </li>
         <li>
           <input type="radio" id="recent" name="selector">
           <label for="recent">Most Recent</label>
@@ -50,21 +53,10 @@
           <div class="check"><div class="inside"></div></div>
         </li> 
       </ul>
-      <div class="container-fluid">
-            <!-- <div class="navbar-header">   -->
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <!-- <span class="sr-only">Toggle navigation</span> -->
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              <!-- <span><a href="index.html" class="logo">FIRSTFAN</a></span> -->
-              </button>
-            <!-- </div> --><!--nav-header -->
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-            </div><!--navbar-collapse -->
-          </div> <!-- container-fluid -->
+           
   </aside>
-    <!-- /MENU -->
+  <div class="panel-overlay"></div>
+  <!-- /MENU -->
 
 
 <section class="right-panel">
@@ -110,7 +102,7 @@
   var instaFeed = new Instafeed({
 
     get: 'tagged',
-    tagName: 'nycsubwaymusic',
+    tagName: 'subwaymusic',
     userId: 6678174,
     accessToken: '6678174.467ede5.205a03ebc4b74d4082823781c3149575',
     target: 'instafeed',

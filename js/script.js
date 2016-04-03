@@ -71,6 +71,7 @@ instaSearch.controller('index', [
         instaSearch.directive('ngEnter', function () {
             return function ($scope, element, attrs) {
                 element.bind('keydown keypress', function (event) {
+                    console.log('keypress')
                     if (event.which === 13) {
                         $scope.searchTag();
                         event.preventDefault();
@@ -109,7 +110,7 @@ $('#instafeed a').remove();
     var instaFeed = new Instafeed({
 
     get: 'tagged',
-    tagName: 'nycsubwaymusic',
+    tagName: 'subwaymusic',
     userId: 6678174,
     accessToken: '6678174.467ede5.205a03ebc4b74d4082823781c3149575',
     target: 'instafeed',
@@ -163,103 +164,36 @@ $.fn.extend({
 }
 
 
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**//**//**//**//**//**/
+$(window).load( function() {
 
-
-
-/*$('#like').click(function() {
-    console.log('#like');
-    $('#instafeed a').remove();
-
-var instaFeed = new Instafeed({
-
-    get: 'tagged',
-    tagName: 'nycsubwaymusic',
-    userId: 6678174,
-    accessToken: '6678174.467ede5.205a03ebc4b74d4082823781c3149575',
-    target: 'instafeed',
-    sortBy: 'most-liked',
-    limit: 32,
-    resolution: 'standard_resolution',
-    template: '<a href="{{link}}"><img src="{{image}}" /><div id="filter">{{model.filter}}</div><div class="info"><p class="location"><i class="icon-location"></i>{{location}}</p><p><i class="icon-comment"></i>{{caption}}</p><br><ul><li class="icon-heart">{{likes}} likes<li class="icon-chat">{{comments}} comments<li class="timestamp">{{model.created_time}}</div></ul></div></a>',
-    filter: function(image)
-    {
-
-    var date = new Date(image.created_time*1000);
-
-    d = date.getDate();
-    m = date.getMonth();
-    y = date.getFullYear();
-
-    var month_names = new Array ( );
-    month_names[month_names.length] = "Jan";
-    month_names[month_names.length] = "Feb";
-    month_names[month_names.length] = "Mar";
-    month_names[month_names.length] = "Apr";
-    month_names[month_names.length] = "May";
-    month_names[month_names.length] = "Jun";
-    month_names[month_names.length] = "Jul";
-    month_names[month_names.length] = "Aug";
-    month_names[month_names.length] = "Sep";
-    month_names[month_names.length] = "Oct";
-    month_names[month_names.length] = "Nov";
-    month_names[month_names.length] = "Dec";
-
-    var thetime = d + ' ' + month_names[m] + ' ' + y;
-
-    image.created_time = thetime;
-
-    return true;
-  }
-
-
-}).run();
-
-$.fn.extend({
-  matchHeight: function(data){
-    var maxHeight = 0;
-    $(this).each(function() {
-       maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-    });
-   $(this).height(maxHeight);
-  }
+  $(".ninja-btn, .panel-overlay, .panel li a").click( function() {
+    $(".ninja-btn, .panel-overlay, .panel").toggleClass("active");
+    /* Check panel overlay */
+    if ($(".panel-overlay").hasClass("active")) {
+      $(".panel-overlay").fadeIn();
+    } else {
+      $(".panel-overlay").fadeOut();
+    }
+  }); 
+  
 });
 
-});*/
+
+$(window).on("load resize", function() {
+  var menuHeightOffset = $(".panel").find("ul").height() /2;
+
+  $(".left-off-canvas-menu").find("ul").css({
+    "margin-top": -menuHeightOffset
+  });
+});
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**//**//**//**//**//**/
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-  $('#like').click(function(event){
-    $('#instafeed a').remove()
-    .update('most-liked');
-  });*/
 
